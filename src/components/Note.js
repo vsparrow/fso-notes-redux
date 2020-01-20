@@ -5,7 +5,7 @@ const Note = ({store})=>{
 	const toggleImportance = id => store.dispatch(toggleImportanceOf(id))
 	return(
 			<ul>
-				{store.getState().map(note => 
+				{store.getState().notes.map(note => 
 					<li key={note.id} onClick={()=>toggleImportance(note.id)}>
 						{note.content} 
 						<strong>
