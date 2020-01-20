@@ -1,18 +1,14 @@
 import React	 from 'react'
 import NewNote from './components/NewNote'
 import Note from './components/Note'
+import VisibilityFilter from './components/VisibilityFilter'
 
 const App = ({store})=>{
-	const radioSelection = {type: 'radio', name: 'filter'}
-	const filterSelected = value => () => {console.log(value)}
+
 	return(
 		<div>
 			<NewNote store={store}/>
-			<div>
-				all <input type='radio' name='filter' onChange={filterSelected('ALL')}/>
-				important <input {...radioSelection} onChange={filterSelected('IMPORTANT')}/>
-				nonimportant <input {...radioSelection} onChange={filterSelected('NONIMPORTANT')}/>
-			</div>
+			<VisibilityFilter store={store} />
 			<Note store={store} />
 		</div>
 	)	
