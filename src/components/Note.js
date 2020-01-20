@@ -3,7 +3,6 @@ import { toggleImportanceOf} from '../reducers/noteReducer'
 
 const Note = ({store})=>{
 	const {notes, filter} = store.getState()
-	// console.log(notes)
 	const notesToShow = () =>{
 		if(filter === 'ALL') {return notes}
 		if(filter === 'IMPORTANT'){return notes.filter(n=>n.important)}

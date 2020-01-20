@@ -13,7 +13,5 @@ const App = ({store})=>{
 		</div>
 	)	
 }
-// important   <input type="radio" name="filter" onChange={filterSelected('IMPORTANT')} />          nonimportant <input type="radio" name="filter" onChange={filterSelected('NONIMPORTANT')} />
-
 
 export default App

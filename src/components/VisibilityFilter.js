@@ -3,9 +3,7 @@ import {filterChange} from '../reducers/filterReducer'
 
 const VisibilityFilter = ({store})=>{
 	const radioSelection = {type: 'radio', name: 'filter'}
-	// const filterSelected = value => () => {console.log(value)}	
 	const filterSelected = value => () => {
-		console.log('filterSelected caled', value)
 		store.dispatch(filterChange(value))
 	}	
 	return(
