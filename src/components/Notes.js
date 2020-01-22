@@ -1,7 +1,8 @@
 import React from 'react'
+import Note from './Note'
 import { toggleImportanceOf} from '../reducers/noteReducer'
 
-const Note = ({store})=>{
+const Notes = ({store})=>{
 	const {notes, filter} = store.getState()
 	const notesToShow = () =>{
 		if(filter === 'ALL') {return notes}
@@ -9,19 +10,19 @@ const Note = ({store})=>{
 		return notes.filter(n=>!n.important) //filter === 'NOT_IMPORTANT'
 	}
 	
-	const toggleImportance = id => store.dispatch(toggleImportanceOf(id))
+	// const toggleImportance = id => store.dispatch(toggleImportanceOf(id))
 	return(
 			<ul>
 				{notesToShow().map(note => 
-					<li key={note.id} onClick={()=>toggleImportance(note.id)}>
-						{note.content} 
-						<strong>
-							{note.important ? 'important' : ''}
-						</strong>
-					</li>
+					<Note 
+						key={note.id} 
+						note={note} 
+						handleClick={ ()=>store.dispatch(toggleImportanceOf(note.id)) }
+					>
+					</Note>
 				)}
 			</ul>	
 	)
 }
 
-export default Note
+export default Notes
