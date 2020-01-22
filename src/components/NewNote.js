@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {createNote} from '../reducers/noteReducer'
+//only referenced by connect, dont call createNote directly
+import {createNote} from '../reducers/noteReducer' 
+
 
 const NewNote = (props)=>{
 	
@@ -11,7 +13,7 @@ const NewNote = (props)=>{
 		event.target.note.value=''
 	}	
 	return(
-		<form onSubmit={addNote}>
+		<form onSubmit={addNote}> 
 			<input name='note' />
 			<button type='submit'>add</button>
 		</form>
@@ -21,3 +23,4 @@ const NewNote = (props)=>{
 // export default NewNote
 //null passed because component does not need to access stores state
 export default connect(null,{createNote})(NewNote)
+//props.createNote has the automathic dispath added by connect
