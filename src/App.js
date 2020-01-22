@@ -1,6 +1,6 @@
 import React	 from 'react'
 import NewNote from './components/NewNote'
-import Note from './components/Note'
+import Notes from './components/Notes'
 import VisibilityFilter from './components/VisibilityFilter'
 
 const App = ({store})=>{
@@ -9,7 +9,7 @@ const App = ({store})=>{
 		<div>
 			<NewNote store={store}/>
 			<VisibilityFilter store={store} />
-			<Note store={store} />
+			<Notes store={store} />
 		</div>
 	)	
 }
