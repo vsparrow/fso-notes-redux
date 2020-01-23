@@ -1,3 +1,5 @@
+import noteService from '../services/notes'
+
 const initialState = [
   {
     content: 'reducer defines how redux store works',
@@ -17,6 +19,8 @@ const noteReducer = (state=initialState, action)=>{
 		case 'NEW_NOTE':
 			// return state.concat(action.data)
 			return [...state, action.data]
+		case 'INIT_NOTES': //get remote data and set to state
+			return action.data
 		case 'TOGGLE_IMPORTANCE':
 			const id = action.data.id
 			const noteToChange = state.find(n => n.id === id)
@@ -28,12 +32,16 @@ const noteReducer = (state=initialState, action)=>{
 }
 
 //helper
-const generateId = ()=>Number((Math.random()* 1000000).toFixed(0))
+// const generateId = ()=>Number((Math.random()* 1000000).toFixed(0))
 
 //action creators
-export const createNote = content => ({type: 'NEW_NOTE', data: {content, important: false, id: generateId()}})
+export const createNote = content => ({type: 'NEW_NOTE', data: {content, important: false, }})
 export const toggleImportanceOf = id =>({type: 'TOGGLE_IMPORTANCE', data: {id}})
-
-
+export const initializeNotes = ()=>{ 
+	return async dispatch => {
+		const notes = await noteService.getAll()
+		dispatch({type: 'INIT_NOTES',data: notes})
+	}
+}
 
 export default noteReducer
