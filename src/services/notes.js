@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/notes'
+const baseUrl = 'http://korea-ide-api-3001.run.goorm.io/notes'
 
 const getAll = async ()=>{
 	const respose = await axios.get(baseUrl)
